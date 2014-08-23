@@ -10,4 +10,18 @@
             android:layout_height="wrap_content"
             android:textSize="50sp" android:textColor="#ffffffff" android:textStyle="italic"
             android:layout_gravity="center_horizontal"/>
+
+    <FrameLayout
+            android:id="@+id/camera_preview"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            />
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" android:src="@drawable/camera_copia"
+            android:contentDescription="@string/contentd_string"/>
 </LinearLayout>

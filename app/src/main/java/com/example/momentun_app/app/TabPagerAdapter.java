@@ -16,10 +16,10 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                //Fragement for Android Tab
-                return new Camera();
+
+                return new CameraActivity();
             case 1:
-                //Fragment for Ios Tab
+
                 return new GifGallery();
 
         }
