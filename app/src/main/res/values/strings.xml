@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Momentun_app</string>
+    <string name="app_name">Momentum</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="camera">CAMERA</string>
+    <string name="image_cd_camera">This is a generic content description</string>
+    <string name="capture_string">Capture</string>
+    <string name="simple_cd_string">simple_content_description</string>
+    <string name="contentd_string">Simple content description</string>
 
 </resources>
