@@ -12,5 +12,9 @@
     <string name="capture_string">Capture</string>
     <string name="simple_cd_string">simple_content_description</string>
     <string name="contentd_string">Simple content description</string>
+    <string name="image_content_description">image_content_description</string>
+    <string name="image_1_camera">image_1_camera</string>
+    <string name="image_2_gallery">image_2_gallery</string>
+    <string name="image_3_video">image_3_video</string>
 
 </resources>

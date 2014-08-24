@@ -4,13 +4,14 @@
               android:layout_height="match_parent"
               android:gravity="center"
               android:orientation="vertical"
-              android:background="#ff80deea">
+              android:background="#ff78909c" android:weightSum="1">
 
     <ImageView
-            android:layout_width="fill_parent"
+            android:layout_width="459dp"
             android:layout_height="300dp"
             android:id="@+id/image_camera"
-            android:contentDescription="@string/image_cd_camera"/>
+            android:contentDescription="@string/image_cd_camera" android:src="@drawable/ic_launcher"
+            />
     <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"

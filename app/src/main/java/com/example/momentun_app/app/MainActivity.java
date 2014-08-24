@@ -1,11 +1,12 @@
 package com.example.momentun_app.app;
 
 
+import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.app.ActionBar;
 
 
 public class MainActivity extends FragmentActivity {
@@ -18,6 +19,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         TabAdapter = new TabPagerAdapter(getSupportFragmentManager());
         Tab = (ViewPager)findViewById(R.id.pager);
