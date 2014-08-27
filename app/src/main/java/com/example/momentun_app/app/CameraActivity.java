@@ -17,12 +17,14 @@ import android.view.*;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static android.hardware.Camera.open;
-
 /**
  * Created by dell on 22/08/2014.
  */
@@ -33,21 +35,16 @@ public class CameraActivity extends Fragment {
     private CameraPreview mPreview;
     private FrameLayout preview;
     private ImageView image1;
-    private ImageView image2;
-    private ImageView image3;
     private Camera.PictureCallback mPicture;
     public static final int MEDIA_TYPE_IMAGE = 1;
+    public View cam;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View cam = inflater.inflate(R.layout.camera_layout, container, false);
+        cam = inflater.inflate(R.layout.camera_layout, container, false);
         image1=(ImageView)cam.findViewById(R.id.imageCameraButton);
-        image2=(ImageView)cam.findViewById(R.id.imageGalleryButton);
-        image3=(ImageView)cam.findViewById(R.id.imageRecordButton);
-
         WindowManager wm = (WindowManager) cam.getContext().getSystemService(Context.WINDOW_SERVICE);
-        Display display=wm.getDefaultDisplay();
 
         mPicture = new Camera.PictureCallback() {
 
@@ -59,44 +56,45 @@ public class CameraActivity extends Fragment {
                     Log.d("", "Error creating media file, check storage permissions: " );
                     return;
                 }
-
                 try {
-                    //String file = pictureFile.toString();
-
-
-
                     FileOutputStream fos = new FileOutputStream(pictureFile);
-                    byte[] file = data;
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inSampleSize = 6;
+                    options.inDither = false; // Disable Dithering mode
+                    options.inPurgeable = true; // Tell to gc that whether it needs free
+
+                    options.inInputShareable = true;
+
+                    options.inTempStorage = new byte[32 * 1024];
+                    options.inPreferredConfig = Bitmap.Config.RGB_565;
+                    Bitmap bMap = BitmapFactory.decodeByteArray(data, 0, data.length, options);
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(90);
+                    Bitmap bMapRotate = Bitmap.createBitmap(bMap, 0, 0, bMap.getWidth(),
+                            bMap.getHeight(), matrix, true);
+                    bMapRotate.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+
                     fos.write(data);
                     fos.flush();
-
-                    BitmapFactory.Options bounds = new BitmapFactory.Options();
-                    bounds.inJustDecodeBounds = true;
-                    BitmapFactory.decodeByteArray(file,0,file.length, bounds);
-
-                    BitmapFactory.Options opts = new BitmapFactory.Options();
-                    Bitmap bm = BitmapFactory.decodeByteArray(file,0,file.length, opts);
-                    ExifInterface exif = new ExifInterface(pictureFile.toString());
-                    String orientString = exif.getAttribute(ExifInterface.TAG_ORIENTATION);
-                    int orientation = orientString != null ? Integer.parseInt(orientString) : ExifInterface.ORIENTATION_NORMAL;
-                    int rotationAngle = 0;
-                    if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90;
-                    if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180;
-                    if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270;
-
-                    Matrix matrix = new Matrix();
-                    matrix.setRotate(rotationAngle, (float) bm.getWidth() / 2, (float) bm.getHeight() / 2);
-                    Bitmap rotatedBitmap = Bitmap.createBitmap(bm, 0, 0, bounds.outWidth, bounds.outHeight, matrix, true);
-
-                    rotatedBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-                    fos.flush();
                     fos.close();
+
                     mCamera.startPreview();
+
                 } catch (FileNotFoundException e) {
                     Log.d("", "File not found: " + e.getMessage());
                 } catch (IOException e) {
                     Log.d("", "Error accessing file: " + e.getMessage());
                 }
+
+                try {
+                    ExifInterface exif = new ExifInterface(pictureFile.getAbsolutePath());
+                    exif.setAttribute(ExifInterface.TAG_ORIENTATION, String.valueOf(90));
+                    exif.saveAttributes();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         };
 
@@ -105,23 +103,21 @@ public class CameraActivity extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // get an image from the camera
+
                         mCamera.takePicture(null, null, mPicture);
-
-
-
 
                     }
                 }
         );
 
-        setCorrectButtonWidth(getButtonWidth(display));
+
 
         mCamera = getCameraInstance();
 
         mPreview = new CameraPreview(this.getActivity().getBaseContext(), mCamera);
         preview = (FrameLayout) cam.findViewById(R.id.camera_preview);
         preview.addView(mPreview);
+        mCamera.setDisplayOrientation(90);
         return cam;
     }
 
@@ -145,14 +141,7 @@ public class CameraActivity extends Fragment {
         return c; // returns null if camera is unavailable
     }
 
-    public void setCorrectButtonWidth(int ButtonWidth) {
-        image1.getLayoutParams().width=ButtonWidth;
-        image2.getLayoutParams().width=ButtonWidth;
-        image3.getLayoutParams().width=ButtonWidth;
-        image1.requestLayout();
-        image2.requestLayout();
-        image3.requestLayout();
-    }
+
 
     private static Uri getOutputMediaFileUri(int type){
         return Uri.fromFile(getOutputMediaFile(type));
@@ -192,4 +181,7 @@ public class CameraActivity extends Fragment {
 
         return mediaFile;
     }
+
+
 }
+

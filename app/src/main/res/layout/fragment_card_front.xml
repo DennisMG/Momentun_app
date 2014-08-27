@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/feed_bg"
+              android:padding="16dp"
+              android:gravity="bottom" android:weightSum="1">
+
+
+    <ImageView
+            android:layout_width="64dp"
+            android:layout_height="56dp"
+            android:id="@+id/pictureCamera"
+            android:layout_gravity="right"
+            android:src="@drawable/c023"
+            android:contentDescription="@string/contento_camera_pic"/>
+    <TextView android:id="@android:id/text1"
+              style="?android:textAppearanceLarge"
+              android:textStyle="bold"
+              android:textColor="#fff"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/card_back_title" />
+
+    <TextView style="?android:textAppearanceSmall"
+              android:textAllCaps="true"
+              android:textColor="#80ffffff"
+              android:textStyle="bold"
+              android:lineSpacingMultiplier="1.2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/card_back_description" />
+
+</LinearLayout>

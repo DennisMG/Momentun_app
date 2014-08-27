@@ -16,5 +16,13 @@
     <string name="image_1_camera">image_1_camera</string>
     <string name="image_2_gallery">image_2_gallery</string>
     <string name="image_3_video">image_3_video</string>
+    <string name="card_back_title">Card Front</string>
+    <string name="card_back_description">Gallery</string>
+    <string name="button_string">Turn</string>
+    <string name="feed_item_description">New Text</string>
+    <string name="feed_item_content_description">Image</string>
+    <string name="feed_item_image_">feed_item_profile_image_content_description</string>
+    <string name="feed_item_status_message">Descripcion de la foto que acabo de tomar...</string>
+    <string name="contento_camera_pic">Content_camera_open</string>
 
 </resources>

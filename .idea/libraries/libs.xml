@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/libs" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/app/libs/Parse-1.5.1-javadoc" />
+    </JAVADOC>
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/app/libs" recursive="false" />
+  </library>
+</component>

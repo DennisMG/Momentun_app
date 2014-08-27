@@ -35,6 +35,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         // underlying surface is created and destroyed.
         mHolder = getHolder();
         mHolder.addCallback(this);
+
         // deprecated setting, but required on Android versions prior to 3.0
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
@@ -71,7 +72,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             Camera.Parameters parameters = mCamera.getParameters();
             parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
             mCamera.setParameters(parameters);
-            mCamera.setDisplayOrientation(90);
+            //mCamera.setDisplayOrientation(90);
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
 
@@ -135,4 +136,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         return optimalSize;
     }
+
+
+
+
+
+
 }
