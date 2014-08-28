@@ -1,19 +1,17 @@
 package com.example.momentun_app.app;
 
-
+import android.app.ActionBar;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.hardware.Camera;
-import android.media.ExifInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -25,10 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static android.hardware.Camera.open;
-/**
- * Created by dell on 22/08/2014.
- */
-public class CameraActivity extends Fragment {
+
+
+public class CameraIndependantActivity extends Activity {
 
     private static final int MEDIA_TYPE_VIDEO = 2;
     private static Camera mCamera;
@@ -37,23 +34,42 @@ public class CameraActivity extends Fragment {
     private ImageView image1;
     private Camera.PictureCallback mPicture;
     public static final int MEDIA_TYPE_IMAGE = 1;
+    private ActionBar actionBar;
+    private Camera.AutoFocusCallback myAutoFocusCallback;
     public View cam;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.camera_layout);
+        actionBar= getActionBar();
+        actionBar.hide();
+        image1=(ImageView)findViewById(R.id.takePicture);
+        preview = (FrameLayout) findViewById(R.id.camera_preview);
 
+        preview.setOnClickListener(new FrameLayout.OnClickListener(){
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        cam = inflater.inflate(R.layout.camera_layout, container, false);
-        image1=(ImageView)cam.findViewById(R.id.takePicture);
-
+            @Override
+            public void onClick(View v) {
+                mCamera.autoFocus(new Camera.AutoFocusCallback() {
+                    @Override
+                    public void onAutoFocus(boolean success, Camera camera) {
+                        if(success){
+                            Log.d("MyCameraApp", "Se enfoco bien!!!! :)");
+                        }
+                    }
+                });
+            }
+        });
 
         mPicture = new Camera.PictureCallback() {
 
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
 
+
                 File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
                 if (pictureFile == null){
-                    Log.d("", "Error creating media file, check storage permissions: " );
+                    Log.d("", "Error creating media file, check storage permissions: ");
                     return;
                 }
                 try {
@@ -79,6 +95,8 @@ public class CameraActivity extends Fragment {
                     fos.close();
 
                     mCamera.startPreview();
+                    image1.setEnabled(true);
+
 
                 } catch (FileNotFoundException e) {
                     Log.d("", "File not found: " + e.getMessage());
@@ -86,13 +104,7 @@ public class CameraActivity extends Fragment {
                     Log.d("", "Error accessing file: " + e.getMessage());
                 }
 
-                try {
-                    ExifInterface exif = new ExifInterface(pictureFile.getAbsolutePath());
-                    exif.setAttribute(ExifInterface.TAG_ORIENTATION, String.valueOf(90));
-                    exif.saveAttributes();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
 
 
             }
@@ -100,11 +112,14 @@ public class CameraActivity extends Fragment {
 
 
         image1.setOnClickListener(
-                new View.OnClickListener() {
+                new ImageView.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        image1.setEnabled(false);
                         mCamera.takePicture(null, null, mPicture);
+                        /*image1.setEnabled(false);
+                        mCamera.autoFocus(myAutoFocusCallback);
+                        mCamera.takePicture(null, null, mPicture);*/
 
                     }
                 }
@@ -114,15 +129,11 @@ public class CameraActivity extends Fragment {
 
         mCamera = getCameraInstance();
 
-        mPreview = new CameraPreview(this.getActivity().getBaseContext(), mCamera);
-        preview = (FrameLayout) cam.findViewById(R.id.camera_preview);
+        mPreview = new CameraPreview(this.getBaseContext(), mCamera);
+
         preview.addView(mPreview);
         mCamera.setDisplayOrientation(90);
-
-        return cam;
     }
-
-
 
     private Camera getCameraInstance() {
         Camera c = null;
@@ -135,13 +146,6 @@ public class CameraActivity extends Fragment {
         return c; // returns null if camera is unavailable
     }
 
-
-
-    private static Uri getOutputMediaFileUri(int type){
-        return Uri.fromFile(getOutputMediaFile(type));
-    }
-
-    /** Create a File for saving an image or video */
     private static File getOutputMediaFile(int type){
         // To be safe, you should check that the SDCard is mounted
         // using Environment.getExternalStorageState() before doing this.
@@ -177,5 +181,22 @@ public class CameraActivity extends Fragment {
     }
 
 
-}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.camera_independant, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

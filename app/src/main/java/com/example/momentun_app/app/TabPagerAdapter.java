@@ -16,11 +16,15 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-
-                return new CameraActivity();
-            case 1:
-
+                //return new CameraActivity();
                 return new GifGallery();
+            case 1:
+                return new CardActivity();
+                //return new GifGallery();
+            case 2:
+
+                //return new CardActivity();
+
 
         }
         return null;

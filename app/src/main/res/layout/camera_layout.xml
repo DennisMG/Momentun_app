@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
               android:gravity="center"
-              android:orientation="vertical" android:background="#ffffd54f">
-    <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50sp" android:textColor="#ffffffff" android:textStyle="italic"
-            android:layout_gravity="center_horizontal"/>
+              android:orientation="vertical"
+              android:weightSum="1">
 
     <FrameLayout
             android:id="@+id/camera_preview"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+            android:layout_above="@+id/Linear_Layout_Id">
+    </FrameLayout>
+    <LinearLayout
+            android:id="@+id/Linear_Layout_Id"
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-
-            />
-
-    <ImageView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView" android:src="@drawable/camera_copia"
-            android:contentDescription="@string/contentd_string"/>
-</LinearLayout>
+            android:weightSum="1" android:gravity="center_horizontal|bottom"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:paddingBottom="15dp" android:background="#ff232323"
+            android:paddingTop="15dp">
+        <ImageView
+                android:layout_width="72dp"
+                android:layout_height="76dp"
+                android:id="@+id/takePicture"
+                android:src="@drawable/camera_copia"
+                android:contentDescription="@string/image_1_camera"
+                android:scaleType="fitEnd"/>
+    </LinearLayout>
+
+</RelativeLayout>
