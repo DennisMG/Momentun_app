@@ -4,29 +4,30 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/feed_bg"
+              android:background="@color/feed_item_bg"
               android:padding="16dp"
               android:gravity="bottom" android:weightSum="1">
 
 
     <ImageView
-            android:layout_width="64dp"
-            android:layout_height="56dp"
+            android:layout_width="49dp"
+            android:layout_height="43dp"
             android:id="@+id/pictureCamera"
             android:layout_gravity="right"
             android:src="@drawable/c023"
-            android:contentDescription="@string/contento_camera_pic"/>
+            android:contentDescription="@string/contento_camera_pic"
+            android:onClick="openCamera"/>
     <TextView android:id="@android:id/text1"
               style="?android:textAppearanceLarge"
               android:textStyle="bold"
-              android:textColor="#fff"
+              android:textColor="#ff6b6b6b"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="@string/card_back_title" />
 
     <TextView style="?android:textAppearanceSmall"
               android:textAllCaps="true"
-              android:textColor="#80ffffff"
+              android:textColor="#804c4c4c"
               android:textStyle="bold"
               android:lineSpacingMultiplier="1.2"
               android:layout_width="match_parent"

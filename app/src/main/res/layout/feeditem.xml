@@ -3,26 +3,33 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/feed_bg"
+
               android:orientation="vertical" >
 
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/bg_parent_rounded_corner"
             android:layout_marginLeft="@dimen/feed_item_margin"
             android:layout_marginRight="@dimen/feed_item_margin"
             android:layout_marginTop="@dimen/feed_item_margin"
-            android:background="@drawable/bg_parent_rounded_corner"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/feed_item_padding_top_bottom"
-            android:paddingTop="@dimen/feed_item_padding_top_bottom" >
+            android:weightSum="1"
+            android:paddingBottom="@dimen/feed_item_padding_top_bottom">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView2" android:src="@drawable/beauties" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" android:scaleType="centerCrop"/>
 
         <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/feed_item_padding_left_right"
-                android:paddingRight="@dimen/feed_item_padding_left_right" >
+                android:paddingRight="@dimen/feed_item_padding_left_right" android:layout_weight="0.90"
+                android:paddingTop="@dimen/feed_item_profile_info_padd">
 
             <ImageView
                     android:layout_width="@dimen/feed_item_profile_pic"
@@ -37,7 +44,7 @@
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/feed_item_profile_info_padd"
                     android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="false">
+                    android:layout_alignParentStart="false" android:id="@+id/linearLayout">
 
                 <TextView
                         android:id="@+id/name"
@@ -45,29 +52,26 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/feed_item_profile_name"
                         android:textStyle="bold" android:text="Dennis Noel"/>
+                <TextView
+                        android:id="@+id/txtStatusMsg"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="La descripcion va aqui...."
+                        android:layout_below="@+id/linearLayout" android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+                <TextView
+                        android:id="@+id/txtUrl"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:linksClickable="true"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+                        android:paddingRight="@dimen/feed_item_status_pad_left_right"
+                        android:textColorLink="@color/link" android:text="www.google.com"
+                        android:layout_alignTop="@+id/txtStatusMsg" android:layout_centerHorizontal="true"/>
 
             </LinearLayout>
         </RelativeLayout>
-
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView2" android:src="@drawable/tumblr"/>
-        <TextView
-                android:id="@+id/txtStatusMsg"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="La descripcion va aqui...." android:paddingLeft="15dp"/>
-
-        <TextView
-                android:id="@+id/txtUrl"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:linksClickable="true"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-                android:paddingRight="@dimen/feed_item_status_pad_left_right"
-                android:textColorLink="@color/link" android:text="www.google.com"/>
         <TextView
                 android:id="@+id/timestamp"
                 android:layout_width="wrap_content"
