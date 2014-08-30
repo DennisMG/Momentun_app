@@ -6,4 +6,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.momentun_app.app.MainActivity"
-    android:visibility="visible" android:background="@color/feed_bg"/>
+    android:visibility="visible" android:background="#eceff1"/>

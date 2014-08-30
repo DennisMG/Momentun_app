@@ -1,6 +1,5 @@
 package com.example.momentun_app.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,13 +25,4 @@ public class CardActivity extends Fragment {
 
 
     }
-
-    public void setOpenCamera(){
-              Intent myIntent = new Intent(Card.getContext(), CameraActivity.class);
-              startActivityForResult(myIntent, 0);
-
-
-    }
-
-
 }

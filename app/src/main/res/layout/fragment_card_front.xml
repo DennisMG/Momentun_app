@@ -9,29 +9,35 @@
               android:gravity="bottom" android:weightSum="1">
 
 
-    <ImageView
-            android:layout_width="49dp"
-            android:layout_height="43dp"
-            android:id="@+id/pictureCamera"
-            android:layout_gravity="right"
-            android:src="@drawable/c023"
-            android:contentDescription="@string/contento_camera_pic"
-            android:onClick="openCamera"/>
-    <TextView android:id="@android:id/text1"
-              style="?android:textAppearanceLarge"
-              android:textStyle="bold"
-              android:textColor="#ff6b6b6b"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/card_back_title" />
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <TextView style="?android:textAppearanceSmall"
+                  android:textAllCaps="true"
+                  android:textColor="#804c4c4c"
+                  android:textStyle="bold"
+                  android:lineSpacingMultiplier="1.2"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/card_back_description" android:id="@+id/textView"/>
+        <TextView android:id="@android:id/text1"
+                  style="?android:textAppearanceLarge"
+                  android:textStyle="bold"
+                  android:textColor="#ff6b6b6b"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/card_back_title" android:layout_below="@+id/textView"
+                  android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+        <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/pictureCamera"
+                android:layout_gravity="right"
+                android:src="@drawable/c023"
+                android:contentDescription="@string/contento_camera_pic"
+                android:onClick="openCamera" android:layout_alignBottom="@android:id/text1"
+                android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>
 
-    <TextView style="?android:textAppearanceSmall"
-              android:textAllCaps="true"
-              android:textColor="#804c4c4c"
-              android:textStyle="bold"
-              android:lineSpacingMultiplier="1.2"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/card_back_description" />
+    </RelativeLayout>
 
 </LinearLayout>

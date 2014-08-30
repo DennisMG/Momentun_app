@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/feed_bg"
+              android:background="#eceff1"
 
               android:orientation="vertical" >
 
@@ -15,70 +15,80 @@
             android:layout_marginTop="@dimen/feed_item_margin"
             android:orientation="vertical"
             android:weightSum="1"
-            android:paddingBottom="@dimen/feed_item_padding_top_bottom">
+            android:paddingBottom="10dp">
 
         <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView2" android:src="@drawable/beauties" android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" android:scaleType="centerCrop"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" 
+                android:scaleType="centerCrop"
+                android:src="@drawable/tumblr2"/>
 
         <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="103dp"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/feed_item_padding_left_right"
-                android:paddingRight="@dimen/feed_item_padding_left_right" android:layout_weight="0.90"
-                android:paddingTop="@dimen/feed_item_profile_info_padd">
+                android:paddingRight="@dimen/feed_item_padding_left_right"
+                android:paddingTop="@dimen/feed_item_profile_info_padd"
+                android:paddingLeft="@dimen/feed_item_profile_name">
 
-            <ImageView
-                    android:layout_width="@dimen/feed_item_profile_pic"
-                    android:layout_height="@dimen/feed_item_profile_pic"
-                    android:id="@+id/imageView"
-                    android:contentDescription="@string/feed_item_content_description" android:src="@drawable/photo"
-                    android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"/>
             <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:orientation="vertical"
-                    android:paddingLeft="@dimen/feed_item_profile_info_padd"
+                    android:paddingLeft="5dp"
                     android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="false" android:id="@+id/linearLayout">
+                    android:layout_alignParentStart="false" android:id="@+id/linearLayout"
+                    >
 
                 <TextView
                         android:id="@+id/name"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/feed_item_profile_name"
-                        android:textStyle="bold" android:text="Dennis Noel"/>
+                        android:textStyle="bold" android:text="Dennis Noel" android:textColor="#ff010101"/>
                 <TextView
                         android:id="@+id/txtStatusMsg"
-                        android:layout_width="fill_parent"
+                        android:layout_width="223dp"
                         android:layout_height="wrap_content"
-                        android:text="La descripcion va aqui...."
                         android:layout_below="@+id/linearLayout" android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"/>
-                <TextView
-                        android:id="@+id/txtUrl"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:linksClickable="true"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-                        android:paddingRight="@dimen/feed_item_status_pad_left_right"
-                        android:textColorLink="@color/link" android:text="www.google.com"
-                        android:layout_alignTop="@+id/txtStatusMsg" android:layout_centerHorizontal="true"/>
+                        android:layout_alignParentEnd="true" android:textColor="#ff202020"
+                        android:text="La descripcion va aqui....me estoy regando en paja para ver hasta donde queda esta baina..... Vamos a seguirnos regando en paja para ver hasta donde llega estooooooo"/>
 
             </LinearLayout>
+            <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_gravity="right"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/linearLayout2" android:layout_toRightOf="@+id/linearLayout"
+                    android:layout_alignBottom="@+id/linearLayout" android:layout_alignParentTop="true">
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/imageView"
+                        android:contentDescription="@string/feed_item_content_description" android:src="@drawable/photo"
+                        android:scaleType="centerInside" android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" android:layout_gravity="right"
+                        android:layout_marginTop="0dp"
+                        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                        android:layout_above="@+id/timestamp"/>
+                <TextView
+                        android:id="@+id/timestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/timestamp"
+                        android:text="2 minutes ago"
+                        android:layout_gravity="right"
+                        android:textSize="9dp"
+                        android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
         </RelativeLayout>
-        <TextView
-                android:id="@+id/timestamp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/timestamp"
-                android:textSize="@dimen/feed_item_timestamp" android:text="2 minutes ago"
-                android:layout_gravity="right" android:layout_marginRight="10dp"/>
 
     </LinearLayout>
 

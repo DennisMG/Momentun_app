@@ -35,11 +35,24 @@ public class GifGallery extends Fragment {
     };
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View gallery = inflater.inflate(R.layout.gallery_layout, container, false);
 
         CustomList adapter = new CustomList((Activity)gallery.getContext(), web, imageId);
         list=(ListView)gallery.findViewById(R.id.list);
         list.setAdapter(adapter);
+
+        /*GifImageView gifImageView = (GifImageView) getActivity().findViewById(R.id.imageView2);
+        try {
+            GifDrawable gd = new GifDrawable(getResources(),R.drawable.tumblr2);
+
+            gifImageView.setImageDrawable(gd);
+        }catch (Exception e){
+
+        }*/
+
+        //imageView.setBackground(view);
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
