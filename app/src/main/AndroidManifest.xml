@@ -47,6 +47,18 @@
             android:name="com.example.momentun_app.app.CameraIndependantActivity"
             android:label="@string/title_activity_camera_independant" >
         </activity>
+        <activity
+            android:name="com.example.momentun_app.app.GifPreview"
+            android:label="@string/title_activity_itempreview" >
+        </activity>
+        <activity
+            android:name="com.example.momentun_app.app.ImagePreview"
+            android:label="@string/title_activity_image_preview" >
+        </activity>
+        <activity
+            android:name="com.example.momentun_app.app.CreatePost"
+            android:label="@string/title_activity_create_post" >
+        </activity>
     </application>
 
     <!--

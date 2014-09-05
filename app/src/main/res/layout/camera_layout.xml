@@ -25,6 +25,10 @@
             android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:paddingBottom="15dp" android:background="#ff232323"
             android:paddingTop="15dp">
+        <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.40"/>
         <ImageView
                 android:layout_width="72dp"
                 android:layout_height="76dp"
@@ -32,6 +36,14 @@
                 android:src="@drawable/camera_copia"
                 android:contentDescription="@string/image_1_camera"
                 android:scaleType="fitEnd"/>
+        <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.20"/>
+        <ImageView
+                android:layout_width="45dp"
+                android:layout_height="match_parent"
+                android:id="@+id/ToGallery" android:src="@drawable/iconsweets"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -4,17 +4,22 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/feed_item_bg"
+              android:background="#fffffcd2"
               android:padding="16dp"
               android:gravity="bottom" android:weightSum="1">
 
 
+    <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/CreateNewPost" android:layout_gravity="right" android:src="@drawable/webbrowsertab"
+            android:onClick="openCreateNewPost"/>
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
         <TextView style="?android:textAppearanceSmall"
                   android:textAllCaps="true"
-                  android:textColor="#804c4c4c"
+                  android:textColor="#80e22600"
                   android:textStyle="bold"
                   android:lineSpacingMultiplier="1.2"
                   android:layout_width="match_parent"
@@ -23,7 +28,7 @@
         <TextView android:id="@android:id/text1"
                   style="?android:textAppearanceLarge"
                   android:textStyle="bold"
-                  android:textColor="#ff6b6b6b"
+                  android:textColor="#ffecf31c"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:text="@string/card_back_title" android:layout_below="@+id/textView"
@@ -31,9 +36,9 @@
         <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:id="@+id/pictureCamera"
+                android:id="@+id/OpenCamera"
                 android:layout_gravity="right"
-                android:src="@drawable/c023"
+                android:src="@drawable/toolcamera"
                 android:contentDescription="@string/contento_camera_pic"
                 android:onClick="openCamera" android:layout_alignBottom="@android:id/text1"
                 android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>

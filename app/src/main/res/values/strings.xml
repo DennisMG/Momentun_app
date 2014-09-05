@@ -25,5 +25,20 @@
     <string name="feed_item_status_message">Descripcion de la foto que acabo de tomar...</string>
     <string name="contento_camera_pic">Content_camera_open</string>
     <string name="title_activity_camera_independant">CameraIndependantActivity</string>
+    <string name="title_activity_itempreview">itempreview</string>
+    <string name="cd_itempreview">contentDescription_itempreview</string>
+    <string name="title_activity_image_preview">ImagePreview</string>
+    <string name="txtStatusMessage">La descripcion va aqui....me estoy regando en paja para ver hasta donde queda esta
+        baina..... Vamos a seguirnos regando en paja para ver hasta donde llega estooooooo</string>
+    <string name="UserName">Dennis Noel</string>
+    <string name="feed_item_str">CD_feed_item_image</string>
+    <string name="timestamp">2 minutes ago</string>
+    <string name="title_activity_create_post">CreatePost</string>
+    <string name="previewUploadPhoto_ContentDescription">this is the picture preview before uploading a new photo
+    </string>
+    <string name="btn_takePhoto_contentDescription">Call camera to take a new picture</string>
+    <string name="btn_Upload">Choose from gallery</string>
+    <string name="btn_cancel_text">Done</string>
+    <string name="profile_image_contentDescription">Profile Image</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.momentun_app.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import android.widget.Toast;
  */
 public class GifGallery extends Fragment {
     ListView list;
+    private View gallery;
+    public final static String EXTRA_MESSAGE = "com.example.momentun_app.MESSAGE";
     String[] web = {
             "Google Plus",
             "Twitter",
@@ -25,38 +28,34 @@ public class GifGallery extends Fragment {
             "Drupal"
     } ;
     Integer[] imageId = {
-            R.drawable.ic_launcher,
-            R.drawable.ic_launcher,
-            R.drawable.ic_launcher,
-            R.drawable.ic_launcher,
-            R.drawable.ic_launcher,
-            R.drawable.ic_launcher,
-            R.drawable.ic_launcher,
+            R.drawable.tumblrdbz,
+            R.drawable.tumblr,
+            R.drawable.space,
+            R.drawable.beauties,
+            R.drawable.tumblr,
+            R.drawable.tumblr2,
+            R.drawable.beauties,
     };
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View gallery = inflater.inflate(R.layout.gallery_layout, container, false);
+        gallery = inflater.inflate(R.layout.gallery_layout, container, false);
 
         CustomList adapter = new CustomList((Activity)gallery.getContext(), web, imageId);
         list=(ListView)gallery.findViewById(R.id.list);
         list.setAdapter(adapter);
 
-        /*GifImageView gifImageView = (GifImageView) getActivity().findViewById(R.id.imageView2);
-        try {
-            GifDrawable gd = new GifDrawable(getResources(),R.drawable.tumblr2);
-
-            gifImageView.setImageDrawable(gd);
-        }catch (Exception e){
-
-        }*/
-
-        //imageView.setBackground(view);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                Intent myIntent = new Intent(parent.getContext(),GifPreview.class);
+
+                int resource= imageId[position];
+                myIntent.putExtra(EXTRA_MESSAGE,resource);
+                startActivityForResult(myIntent, 0);
+                ((Activity) gallery.getContext()).finish();
                 Toast.makeText(getActivity(), "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
             }
         });

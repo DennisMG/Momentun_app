@@ -3,16 +3,16 @@ package com.example.momentun_app.app;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class MainActivity extends FragmentActivity {
+
 
 
     ViewPager Tab;
@@ -22,18 +22,13 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ParseObject.registerSubclass(PhotoPost.class);
         Parse.initialize(this, "e8c95V53VCL4erEEcB9RFkG8u3snb8YPevhQ8Tvj", "0ONFzrSprwkymciPf3mL7cHHoEvlXBFbJiwUbYuZ");
 
-        /*ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();*/
 
-
-
-
-
-
-
+        PhotoPost testObject = new PhotoPost();
+        testObject.setDescription("Holis");
+        testObject.saveInBackground();
 
 
         setContentView(R.layout.activity_main);
@@ -50,7 +45,6 @@ public class MainActivity extends FragmentActivity {
                 });
         Tab.setAdapter(TabAdapter);
         Tab.setPageTransformer(true, new ZoomOutPageTransformer());
-        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar = getActionBar();
         actionBar.hide();
 
@@ -81,10 +75,5 @@ public class MainActivity extends FragmentActivity {
         //Add New Tab
         actionBar.addTab(actionBar.newTab().setText("Camera").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Gallery").setTabListener(tabListener));
-    }
-
-    public void openCamera(View view) {
-        Intent myIntent = new Intent(this, CameraIndependantActivity.class);
-        startActivityForResult(myIntent, 0);
     }
 }
